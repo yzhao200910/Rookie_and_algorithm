@@ -23,7 +23,7 @@ public:
     void show_print(){
         std::cout<<"ss:"<<ss<<std::endl;
 
-    }vbb hgb hhncb n gbvhngb bgb n vhgb hnb n bhnnnnnngbbnhnb n bhnb n b
+    }
 public:
    std::string ss;
 
