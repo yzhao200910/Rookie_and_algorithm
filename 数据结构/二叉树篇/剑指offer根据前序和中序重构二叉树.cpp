@@ -22,10 +22,10 @@ struct TreeNode {
          TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
      };
 class Solution {
-    TreeNode* traversal(std::vector<int> &preface, int prefaceBegin, int prefaceEnd, vector<int> &inorder, int inorderBegin,int inorderEnd) {//这里两个数组在实际构造二叉树多半为临时值，这两个数组的传参可以用右值引用
-        if (prefaceBegin == prefaceEnd) return nullptr;                                                                            //告诉编译器可以发生移动语义稍微提一下，利用std::move()实现左值变右值
-        int rootvalue=preface[prefaceBegin];//前序数组的第一个值就是根节点的值，也是左子树和右子树的根的值                                    //将两个数组的权限转移给了函数，函数作用域结束，两个数组也就被释放掉了，为啥
-                                                                                                                          //能提高效率呢，像指针或者左值引用都是复制了一份指针或者别名来指向这块区域，复制这些不也是在浪费资源
+    TreeNode* traversal(std::vector<int> &preface, int prefaceBegin, int prefaceEnd, vector<int> &inorder, int inorderBegin,int inorderEnd) {
+        if (prefaceBegin == prefaceEnd) return nullptr;
+        int rootvalue=preface[prefaceBegin];//前序数组的第一个值就是根节点的值，也是左子树和右子树的根的值
+
        TreeNode* node=new TreeNode(rootvalue);
        //unique_ptr<TreeNode>node= make_unique<TreeNode>(rootvalue);
        // 而右值引用呢，他创建一个指针指向这块区域，同时将原来的指针指向空，这不少了一部分占内存的资源
