@@ -17,8 +17,8 @@ public:
         for (int i = 0; str[i]; i++) {
             int u = str[i] - 'a';//哈希映射，每个字符对应编码的数字是不同的
             //用字符去减a就是对a的偏移量
-            if (!son[p][u]) son[p][u] = ++idx;//更新层数
-            p = son[p][u]; //首先这是二维数组，里面的元素对应每个字符串第一个字母的位置
+            if (!son[p][u]) son[p][u] = ++idx;//比如头为a 给a上户口
+            p = son[p][u];
         }
         cnt[p]++;//对结尾进行标记
     }
